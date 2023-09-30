@@ -11,7 +11,7 @@ management:
       enabled: true
       mode: FULL
     build:
-      enabled: true
+      enabled: true  # info.git.build vs endpoint.build
     java:
       enabled: true
     os:

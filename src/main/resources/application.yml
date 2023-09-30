@@ -1,3 +1,7 @@
+#logging:
+#  level:
+#    root: debug  # too much log
+
 management:
   endpoints:
     web:

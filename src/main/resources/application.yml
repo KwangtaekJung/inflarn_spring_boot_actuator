@@ -9,6 +9,7 @@ management:
       enabled: true  # endpoint.info.env vs endpoint.env
     git:
       enabled: true
+      mode: FULL
     build:
       enabled: true
     java:

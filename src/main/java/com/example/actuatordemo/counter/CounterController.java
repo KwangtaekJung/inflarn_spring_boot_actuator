@@ -12,9 +12,13 @@ public class CounterController {
 
     private final MyHttpRequestManager myHttpRequestManager;
 
+    private final MyHttpRequestManagerWithoutMicrometer myManager;
+
     @GetMapping("/req")
     public String req() {
         myHttpRequestManager.increase();
+
+        myManager.increase();
 
         return "ok";
     }

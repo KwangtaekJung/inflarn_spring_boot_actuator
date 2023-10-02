@@ -1,5 +1,6 @@
 package com.example.actuatordemo.counter;
 
+import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,12 @@ public class CounterController {
                 .register(meterRegistry)
                 .increment();
 
+        return "ok";
+    }
+
+    @Counted("my.http.counted.counter")
+    @GetMapping("/req2")
+    public String req2() {
         return "ok";
     }
 }

@@ -14,10 +14,11 @@ public class MyStockMeterBinderConfig {
         return new MeterBinder() {
             @Override
             public void bindTo(MeterRegistry meterRegistry) {
-                Gauge.builder("my.stock", myStockManager, m -> {
-                            return m.getStockCount();
-                        })
-                        .register(meterRegistry);
+//                Gauge.builder("my.stock", myStockManager, m -> {
+//                            return m.getStockCount();
+//                        })
+//                        .register(meterRegistry);
+                Gauge.builder("my.stock", myStockManager).register(meterRegistry);
             }
         };
     }

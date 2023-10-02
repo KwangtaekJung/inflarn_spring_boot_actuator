@@ -1,5 +1,7 @@
 package com.example.actuatordemo.counter;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +16,17 @@ public class CounterController {
 
     private final MyHttpRequestManagerWithoutMicrometer myManager;
 
+    private final MeterRegistry meterRegistry;
+
     @GetMapping("/req")
     public String req() {
         myHttpRequestManager.increase();
 
         myManager.increase();
+
+        Counter.builder("my.http.request.direct.registry")
+                .register(meterRegistry)
+                .increment();
 
         return "ok";
     }
